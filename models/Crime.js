@@ -17,6 +17,9 @@ const CrimeSchema = new mongoose.Schema({
         enum:['ACTIVE', 'ARCHIVED', 'SOLVED'],
         default:'ACTIVE'
     },
+    images : [{
+        path: String
+    }],
     location:{
         type: {
             type: String, 
