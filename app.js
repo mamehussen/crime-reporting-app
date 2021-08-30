@@ -11,7 +11,10 @@ const authenticateUser = require('./middleware/authentication')
 // routers
 const authRouter = require('./routes/auth')
 const crimesRouter = require('./routes/crimes')
-
+const announcementsRouter = require('./routes/announcements')
+const tipsRouter = require('./routes/tips')
+const missingPeopleRouter = require('./routes/missingpeople')
+const wantedPeopleRouter = require('./routes/wantedpeople')
 
 
 // error handler
@@ -24,7 +27,12 @@ app.use(express.json())
 
 //routes
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/crimes',authenticateUser, crimesRouter)
+app.use('/api/v1/crimes', authenticateUser, crimesRouter)
+app.use('/api/v1/announcements', announcementsRouter)
+app.use('/api/v1/tips', authenticateUser, tipsRouter)
+app.use('/api/v1/missing', missingPeopleRouter)
+app.use('/api/v1/wanted', wantedPeopleRouter)
+
 
 
 app.use(notFoundMiddleware)
