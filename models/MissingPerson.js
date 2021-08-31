@@ -13,10 +13,6 @@ const MissingPersonSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'User',
     },
-    tips: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Tip'
-    }],
     lastSeen: String,
     status:{
         type:String,

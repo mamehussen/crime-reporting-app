@@ -9,10 +9,6 @@ const WantedPersonSchema = new mongoose.Schema({
         ref:'User',
         required:[true, 'Please provide user']
     },
-    tips: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Tip'
-    }],
     lastSeen: String,
     status:{
         type:String,
