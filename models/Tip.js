@@ -9,6 +9,14 @@ const TipSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'User',
         required:[true, 'Please provide user']
+    },
+    missingPerson: {
+        type:mongoose.Types.ObjectId,
+        ref:'MissingPerson',
+    },
+    wantedPerson: {
+        type:mongoose.Types.ObjectId,
+        ref:'WantedPerson',
     }
 
 }, {timestamps:true})
