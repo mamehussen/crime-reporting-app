@@ -9,7 +9,7 @@ const getAllAnnouncements = async (req, res) => {
 
 const getAnnouncement = async (req, res) => {
     const {params: {id:announcementId}} = req
-    const announcement = await Crime.findOne({ _id:announcementId })
+    const announcement = await Announcement.findOne({ _id:announcementId })
     if(!announcement){
         throw new NotFoundError('Could\'nt find announcement')
     }

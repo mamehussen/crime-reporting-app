@@ -1,21 +1,59 @@
+const MissingPerson = require('../models/WantedPerson')
+const {StatusCodes} = require('http-status-codes')
+const {BadRequestError, NotFoundError, UnauthenticatedError} = require('../errors')
+const WantedPerson = require('../models/WantedPerson')
+
+
 const getAllWantedPeople = async (req, res) => {
-    res.send('Get all Wanted People')
+    const wantedPeople = await WantedPerson.find({})
+    res.status(StatusCodes.OK).json({ wantedPeople })
 }
 
 const getWantedPerson = async (req, res) => {
-    res.send('Get Wanted Person')
+    const {params: {id:wantedPersonId}} = req
+    const wantedPerson = await WantedPerson.findOne({ _id:wantedPersonId })
+    if(!wantedPerson){
+        throw new NotFoundError('Could\'nt find wanted person')
+    }
+    res.status(StatusCodes.OK).json({ wantedPerson })
 }
 
 const createWantedPerson = async (req, res) => {
-    res.send('Create Wanted Person')
+    req.body.createdBy = req.user.userId
+    const wantedPerson = await WantedPerson.create(req.body)
+    res.status(StatusCodes.CREATED).json({ wantedPerson })
 }
 
 const updateWantedPerson = async (req, res) => {
-    res.send('Update Wanted Person')
+    const {
+        body:{ description },
+        user: {userId},
+        params: {id:wantedPersonId}
+    } = req
+
+    const wantedPerson = await WantedPerson.findByIdAndUpdate(
+        {_id:wantedPersonId, createdBy:userId},
+        req.body,
+        {new:true, runValidators:true})
+        if(!wantedPerson){
+            throw new NotFoundError('Could\'nt find wantedPerson')
+        }
+        res.status(StatusCodes.OK).json({ wantedPerson })
 }
 
+
 const deleteWantedPerson = async (req, res) => {
-    res.send('Delete Wanted Person')
+    const {
+        body:{description},
+        user: {userId},
+        params: {id:wantedPersonId}
+    } = req
+
+    const wantedPerson = await WantedPerson.findByIdAndRemove({_id:wantedPersonId, createdBy:userId})
+    if(!wantedPerson){
+        throw new NotFoundError('Could\'nt find wantedPerson')
+    }
+        res.status(StatusCodes.OK).send('Deleted Successfully')
 }
 
 

@@ -3,7 +3,10 @@ const mongoose = require('mongoose')
 const WantedPersonSchema = new mongoose.Schema({
     fullName: String,
     description: String,
-    image: String,
+    image:{
+        type: String,
+        default: 'placeholder.jpg'
+    },
     createdBy:{
         type:mongoose.Types.ObjectId,
         ref:'User',
