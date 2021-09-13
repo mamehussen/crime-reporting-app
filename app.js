@@ -31,9 +31,9 @@ app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/crimes', authenticateUser, crimesRouter)
 app.use('/api/v1/announcements', announcementsRouter)
 app.use('/api/v1/authannouncement', authenticateUser, authAnnouncementsRouter)
-app.use('/api/v1/tips', tipsRouter)
-app.use('/api/v1/missing', missingPeopleRouter)
-app.use('/api/v1/wanted', wantedPeopleRouter)
+app.use('/api/v1/tips', authenticateUser, tipsRouter)
+app.use('/api/v1/missing', authenticateUser, missingPeopleRouter)
+app.use('/api/v1/wanted', authenticateUser, wantedPeopleRouter)
 
 
 

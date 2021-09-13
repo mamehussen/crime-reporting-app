@@ -3,7 +3,10 @@ const mongoose = require('mongoose')
 const MissingPersonSchema = new mongoose.Schema({
     fullName: String,
     description: String,
-    image: String,
+    image:{
+        type: String,
+        default: 'placeholder.jpg'
+    },
     createdBy:{
         type:mongoose.Types.ObjectId,
         ref:'User',
@@ -16,8 +19,8 @@ const MissingPersonSchema = new mongoose.Schema({
     lastSeen: String,
     status:{
         type:String,
-        enum:['MISSING', 'FOUND', 'ARCHIVED'],
-        default:'MISSING'
+        enum:['SUBMITTED','MISSING', 'FOUND', 'ARCHIVED'],
+        default:'SUBMITTED'
     }
 
 })
