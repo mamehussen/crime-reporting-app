@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
-const AnnoucementSchema = new mongoose.Schema({
-    announcementType: {
-    type: String,
-    enum: ['Normal', 'Urgent'],
-    default: 'Normal'
+const AnnouncementSchema = new mongoose.Schema({
+    announcementStatus: {
+        type: String,
+        enum: ['Normal', 'Urgent'],
+        default: 'Normal'
     },
     title: {
         type: String,
@@ -22,4 +22,4 @@ const AnnoucementSchema = new mongoose.Schema({
 
 }, {timestamps:true})
 
-module.exports = mongoose.model('Announcement', AnnoucementSchema)
+module.exports = mongoose.model('Announcement', AnnouncementSchema)
