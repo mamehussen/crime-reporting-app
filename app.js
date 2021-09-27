@@ -23,6 +23,7 @@ const authAnnouncementsRouter = require('./routes/authAnnouncement')
 const tipsRouter = require('./routes/tips')
 const missingPeopleRouter = require('./routes/missingpeople')
 const wantedPeopleRouter = require('./routes/wantedpeople')
+const anonymousCrimeRouter = require('./routes/anonymousCrimes')
 
 
 // error handler
@@ -42,6 +43,7 @@ app.get('/', (req, res) => {
 
 //routes
 app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/anonymous', anonymousCrimeRouter)
 app.use('/api/v1/crimes', authenticateUser, crimesRouter)
 app.use('/api/v1/announcements', announcementsRouter)
 app.use('/api/v1/authannouncement', authenticateUser, authAnnouncementsRouter)
@@ -55,6 +57,7 @@ app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 3000
+
 
 const start = async () => {
     try {
