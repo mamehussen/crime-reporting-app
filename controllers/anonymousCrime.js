@@ -5,7 +5,7 @@ const { crossOriginEmbedderPolicy } = require('helmet')
 
 const getAllAnonymousCrimes = async(req, res) => {
     
-    const anonymousCrimes = await AnonymousCrime.find({})
+    const anonymousCrimes = await AnonymousCrime.find({}).sort({ createdAt: 'desc'}).exec();
     res.status(StatusCodes.OK).json({anonymousCrimes})
 }
 

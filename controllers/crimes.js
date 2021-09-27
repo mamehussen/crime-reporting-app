@@ -7,7 +7,7 @@ const getAllCrimes = async(req, res) => {
     if(req.user.role !== 'police'){
         throw new UnauthenticatedError('You are not Authorized to access this route.')
     }
-    const crimes = await Crime.find({})
+    const crimes = await Crime.find({}).sort({ createdAt: 'desc'}).exec();
     res.status(StatusCodes.OK).json({crimes})
 }
 

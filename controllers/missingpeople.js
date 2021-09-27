@@ -3,7 +3,7 @@ const {StatusCodes} = require('http-status-codes')
 const {BadRequestError, NotFoundError, UnauthenticatedError} = require('../errors')
 
 const getAllMissingPeople = async (req, res) => {
-    const missingPeople = await MissingPerson.find({})
+    const missingPeople = await MissingPerson.find({}).sort({ createdAt: 'desc'}).exec();
     res.status(StatusCodes.OK).json({ missingPeople })
 }
 

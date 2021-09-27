@@ -3,7 +3,7 @@ const {StatusCodes} = require('http-status-codes')
 const {BadRequestError, NotFoundError, UnauthenticatedError} = require('../errors')
 
 const getAllAnnouncements = async (req, res) => {
-    const announcements = await Announcement.find({})
+    const announcements = await Announcement.find({}).sort({ createdAt: 'desc'}).exec();
     res.status(StatusCodes.OK).json({ announcements })
 }
 

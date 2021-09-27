@@ -5,7 +5,7 @@ const WantedPerson = require('../models/WantedPerson')
 
 
 const getAllWantedPeople = async (req, res) => {
-    const wantedPeople = await WantedPerson.find({})
+    const wantedPeople = await WantedPerson.find({}).sort({ createdAt: 'desc'}).exec();
     res.status(StatusCodes.OK).json({ wantedPeople })
 }
 
