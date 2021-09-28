@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router()
 
+var multer = require('multer')
+var upload = multer({})
+
 const {
     getAllCrimes,
     getAllMyReportedCrimes,
@@ -10,7 +13,7 @@ const {
     updateCrime
 } = require('../controllers/crimes')
 
-router.route('/').post(createCrime).get(getAllCrimes)
+router.route('/').post(upload.single('photo'), createCrime).get(getAllCrimes)
 router.route('/mycrimes').get(getAllMyReportedCrimes)
 router.route('/:id').get(getCrime).delete(deleteCrime).patch(updateCrime)
 

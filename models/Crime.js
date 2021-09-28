@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const CrimeSchema = new mongoose.Schema({
-    crimeType:{
-        type:String,
-        required:[true, 'Please select crime type'],
+    crimeType: {
+        type: String,
+        required: [true, 'Please select crime type'],
         enum: [
             'Theft', 'Assault', 'Fraud',
             'Injury', 'Threats', 'Traffic Collision',
@@ -11,31 +11,31 @@ const CrimeSchema = new mongoose.Schema({
             'Break In'
         ]
     },
-    description:String,
-    address:String,
-    status:{
-        type:String,
-        enum:['ACTIVE', 'ARCHIVED', 'SOLVED'],
-        default:'ACTIVE'
+    description: String,
+    address: String,
+    status: {
+        type: String,
+        enum: ['ACTIVE', 'ARCHIVED', 'SOLVED'],
+        default: 'ACTIVE'
     },
-    images : [{
-        path: String
-    }],
-    location:{
+    image: String,
+    location: {
         type: {
-            type: String, 
+            type: String,
             enum: ['Point']
-          },
-          coordinates: {
+        },
+        coordinates: {
             type: [Number]
-          }
+        }
     },
-    createdBy:{
-        type:mongoose.Types.ObjectId,
-        ref:'User',
-        required:[true, 'Please provide user']
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'Please provide user']
     }
 
-}, {timestamps:true})
+}, {
+    timestamps: true
+})
 
 module.exports = mongoose.model('Crime', CrimeSchema)
