@@ -47,10 +47,11 @@ const createCrime = async(req, res) => {
 
     const file = req.file;
 
+if(file){
     const uploaded = await cloudinaryUpload(file.buffer);
     const uploadedUrl = uploaded.secure_url;
-
-    req.body.image = uploadedUrl;
+     req.body.image = uploadedUrl;
+}
  
     const crime = await Crime.create(req.body)
     res.status(StatusCodes.CREATED).json({ crime })
