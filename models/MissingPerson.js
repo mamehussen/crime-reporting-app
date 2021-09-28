@@ -23,6 +23,6 @@ const MissingPersonSchema = new mongoose.Schema({
         default:'SUBMITTED'
     }
 
-})
+}, {timestamps:true})
 
 module.exports = mongoose.model('MissingPerson', MissingPersonSchema)

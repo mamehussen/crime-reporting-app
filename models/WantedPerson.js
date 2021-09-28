@@ -18,6 +18,6 @@ const WantedPersonSchema = new mongoose.Schema({
         enum:['WANTED', 'FOUND', 'ARCHIVED'],
         default:'WANTED'
     }
-})
+}, {timestamps:true})
 
 module.exports = mongoose.model('WantedPerson', WantedPersonSchema)

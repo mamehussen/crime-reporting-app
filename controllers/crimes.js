@@ -12,7 +12,7 @@ const getAllCrimes = async(req, res) => {
 }
 
 const getAllMyReportedCrimes = async(req, res) => {
-    const myCrimes = await Crime.find({createdBy: req.user.userId}).sort('createdAt')
+    const myCrimes = await Crime.find({createdBy: req.user.userId}).sort({ createdAt: 'desc'}).exec();
     res.status(StatusCodes.OK).json({myCrimes, count:myCrimes.length })
 }
 

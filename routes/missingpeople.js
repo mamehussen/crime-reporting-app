@@ -3,14 +3,11 @@ const router = express.Router()
 
 const {
     getAllMissingPeople,
-    getMissingPerson,
-    createMissingPerson,
-    updateMissingPerson,
-    deleteMissingPerson
+    getMissingPerson    
 } = require('../controllers/missingpeople')
 
-router.route('/').post(createMissingPerson).get(getAllMissingPeople)
-router.route('/:id').get(getMissingPerson).delete(deleteMissingPerson).patch(updateMissingPerson)
+router.route('/').get(getAllMissingPeople)
+router.route('/:id').get(getMissingPerson)
 
 
 module.exports = router

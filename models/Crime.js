@@ -12,6 +12,7 @@ const CrimeSchema = new mongoose.Schema({
         ]
     },
     description:String,
+    address:String,
     status:{
         type:String,
         enum:['ACTIVE', 'ARCHIVED', 'SOLVED'],

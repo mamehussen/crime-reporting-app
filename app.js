@@ -22,7 +22,9 @@ const announcementsRouter = require('./routes/announcements')
 const authAnnouncementsRouter = require('./routes/authAnnouncement')
 const tipsRouter = require('./routes/tips')
 const missingPeopleRouter = require('./routes/missingpeople')
+const authMissingPeopleRouter = require('./routes/authMissing')
 const wantedPeopleRouter = require('./routes/wantedpeople')
+const authWantedPeopleRouter = require('./routes/authWanted')
 const anonymousCrimeRouter = require('./routes/anonymousCrimes')
 
 
@@ -48,9 +50,10 @@ app.use('/api/v1/crimes', authenticateUser, crimesRouter)
 app.use('/api/v1/announcements', announcementsRouter)
 app.use('/api/v1/authannouncement', authenticateUser, authAnnouncementsRouter)
 app.use('/api/v1/tips', authenticateUser, tipsRouter)
-app.use('/api/v1/missing', authenticateUser, missingPeopleRouter)
-app.use('/api/v1/wanted', authenticateUser, wantedPeopleRouter)
-
+app.use('/api/v1/missing', missingPeopleRouter)
+app.use('/api/v1/authmissing', authenticateUser, authMissingPeopleRouter)
+app.use('/api/v1/wanted',  wantedPeopleRouter)
+app.use('/api/v1/authwanted', authenticateUser, authWantedPeopleRouter)
 
 
 app.use(notFoundMiddleware)
