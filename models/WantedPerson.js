@@ -12,6 +12,7 @@ const WantedPersonSchema = new mongoose.Schema({
         ref:'User',
         required:[true, 'Please provide user']
     },
+    image: String,
     lastSeen: String,
     status:{
         type:String,

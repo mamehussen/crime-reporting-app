@@ -16,6 +16,7 @@ const MissingPersonSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'User',
     },
+    image: String,
     lastSeen: String,
     status:{
         type:String,
