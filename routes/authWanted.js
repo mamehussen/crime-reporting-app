@@ -7,7 +7,7 @@ const {
     deleteWantedPerson
 } = require('../controllers/wantedpeople')
 
-router.route('/').post(createWantedPerson)
+router.route('/').post(upload.single('photo'), createWantedPerson)
 router.route('/:id').delete(deleteWantedPerson).patch(updateWantedPerson)
 
 
